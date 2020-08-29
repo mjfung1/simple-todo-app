@@ -17,6 +17,11 @@ input[type=text]:focus {
 .todos li {
     background: rgba(136, 4, 22, 0.863);
 }
+
 .delete {
     cursor: pointer;
+}
+
+.filtered {
+    display: none !important;
 }
