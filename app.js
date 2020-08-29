@@ -1,5 +1,6 @@
 const addForm = document.querySelector('.add');
 const list = document.querySelector('.todos');
+const trash = document.querySelector('.delete');
 
 const generateTemplate = todo => {
 
@@ -18,5 +19,16 @@ addForm.addEventListener('submit', e => {
     e.preventDefault();
     const todo = addForm.add.value.trim();
     
-    generateTemplate(todo);
+    if(todo.length){
+        generateTemplate(todo);
+        addForm.reset();
+    }
+});
+
+// delete todos
+list.addEventListener('click', e => {
+    
+    if(e.target.classList.contains('delete')) {
+        e.target.parentElement.remove()
+    }
 })
