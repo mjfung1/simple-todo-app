@@ -1,5 +1,5 @@
 body {
-    background: rgb(189, 13, 51)
+    background: rgb(189, 13, 51);
 }
 
 .container {
@@ -18,10 +18,12 @@ input[type=text]:focus {
     background: rgba(136, 4, 22, 0.863);
 }
 
-.delete {
+.delete, 
+.edit {
     cursor: pointer;
 }
 
 .filtered {
     display: none !important;
 }
+

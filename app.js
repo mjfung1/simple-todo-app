@@ -1,14 +1,21 @@
 const addForm = document.querySelector('.add');
 const list = document.querySelector('.todos');
-const trash = document.querySelector('.delete');
+// const trash = document.querySelector('.delete');
+// const edit = document.querySelector('.edit')
 const search = document.querySelector('.search input');
+
+
+// creating todos
 
 const generateTemplate = todo => {
 
     const html = `
         <li class="list-group-item d-flex justify-content-between align-items-center">
             <span>${todo}</span>
-            <i class="far fa-trash-alt delete"></i>
+            <div>
+                <i class="far fa-edit edit"></i>
+                <i class="far fa-trash-alt delete"></i>
+            </div>
         </li>
     `;
 
@@ -24,19 +31,35 @@ addForm.addEventListener('submit', e => {
         generateTemplate(todo);
         addForm.reset();
     }
+
+    // add local storage
+    localStorage.setItem('todo', todo)
 });
+
 
 // delete todos
 list.addEventListener('click', e => {
     
     if(e.target.classList.contains('delete')) {
-        e.target.parentElement.remove()
+        e.target.parentElement.parentElement.remove()
     }
 });
 
+// editing todos
 
+// list.addEventListener('click', e => {
 
-// search functionality
+//     if (e.target.classList.contains('edit')) {
+//         console.log(e)
+//     }
+// });
+
+{/* <input type="text"
+    class="form-control m-auto"
+    name="search"
+    placeholder="" /> */}
+
+// search todos functionality
 
 const filterTodos = (term) => {
     Array.from(list.children)
@@ -52,3 +75,8 @@ search.addEventListener('keyup', () => {
     const term = search.value.trim().toLowerCase();
     filterTodos(term);
 });
+
+
+if (localStorage.getItem('todo')) {
+    generateTemplate(localStorage.getItem('todo'))
+};
